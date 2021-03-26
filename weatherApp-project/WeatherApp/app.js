@@ -1,12 +1,13 @@
 
 
-/*Get request using Fetch to make a dynamic url query*/
+/* Event listener that will trigger the API call function and gather all the user datas and API 
+datas that the server will then add to the js object projectData */
 document.getElementById('generate').addEventListener('click',action);
 
 function action(e){
-
     const newZip = document.getElementById('zip').value;
     const newContent = document.getElementById('feelings').value;
+
     /*Create a new date instance dynamically with JS*/
     let d = new Date();
     let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
@@ -14,34 +15,36 @@ function action(e){
     const newTime = document.getElementById("date").value;
     
     getCity(baseURL, newZip, apiKey)
+    /*to tell the program to do this task after the previous one */
     .then(function(data){
-        console.log(data)
-        postData("/", { date:newTime, temp:data, content:newContent });
+        postData("/", { date:newTime, temp:data.main.temp, content:newContent });
     })
+    /*to get the data from projectdata (the js object) displayed on the browser*/
+    .then(
+        updateUI()
+    )
 }
-
-let baseURL ='https://api.openweathermap.org/data/2.5/weather?q=';
-let apiKey = "&appid=c3ce4cd3a2dad80331ebdf71257604b6";
-
 
 
 /*API Call function*/
+/*Get request function using Fetch to make a dynamic url query*/
+let baseURL ='https://api.openweathermap.org/data/2.5/weather?q=';
+let apiKey = "&appid=c3ce4cd3a2dad80331ebdf71257604b6";
+
 const getCity = async (baseURL, zip, key) =>{
     const res = await fetch(baseURL+ zip+ key )
     try{
         const data = await res.json();
-        console.log(data);
+        return data
     }
     catch(error){
         console.log("error",error);
     }
 }
 
-
 /*POST request function*/
 const postData = async ( url = '', data = {})=>{
-    console.log(data);
-    const response = await fetch(url, {
+    const res = await fetch(url, {
         method: 'POST', 
         credentials: 'same-origin',
         headers: {
@@ -50,11 +53,23 @@ const postData = async ( url = '', data = {})=>{
         body: JSON.stringify(data), 
     });
     try {
-        const newData = await response.json();
-        console.log(newData);
+        const newData = await res.json();
         return newData;
     }catch(error) {
-        console.log( "error")
+        console.log( "error", error);
     }
 };
+
+/* with fetch, I 'm gonna call the data from the js object projectData*/
+const updateUI = async() => {
+    const request= await fetch("/");
+    try {
+        const allData = await request.json();
+        document.getElementById('date').innerHTML = allData[0].date;
+        document.getElementById('temp').innerHTML = allData[0].temp;
+        document.getElementById('content').innerHTML = allData[0].content;
+    }catch(error){
+        console.log("error", error);
+    }
+}
 
