@@ -1,8 +1,8 @@
 // Setup empty JS object to act as endpoint for all routes
-projectData = {};
+const projectData = {};
 
 // Require Express to run server and routes
-const express = require("express");
+const express = require('express');
 
 // Start up an instance of app
 const app = express();
@@ -29,12 +29,13 @@ const  server = app.listen(port, ()=>{console.log(`running on localhost:${port}`
 
 
 
-/* Get route */
-app.get("/", function (req, res) {
-    res.send(projectData)
-  })
 
-/* Post route */
+/* Get route, allows app.js to receive the js object data stored when called*/
+app.get("/",function(req, res){
+    res.send(projectData);
+});
+
+/* Post route, sort the data that we receive from the app.js(client side) */
 app.post("/", function(req,res) {
     let newData = req.body;
     let newEntry= {
@@ -42,7 +43,8 @@ app.post("/", function(req,res) {
         temp: newData.temp,
         content: newData.content
     }
-    projectData.push(newEntry);
+    /*to assign user datas and api datas to the js object*/
+    Object.assign(projectData, newEntry);
     console.log(projectData)
 });
 
