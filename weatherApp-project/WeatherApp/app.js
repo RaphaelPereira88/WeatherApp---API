@@ -1,5 +1,6 @@
 
 
+
 /* Event listener that will trigger the API call function and gather all the user datas and API 
 datas that the server will then add to the js object projectData */
 document.getElementById('generate').addEventListener('click',action);
@@ -17,12 +18,10 @@ function action(e){
     getCity(baseURL, newZip, apiKey)
     /*to tell the program to do this task after the previous one */
     .then(function(data){
-        postData("/", { date:newTime, temp:data.main.temp, content:newContent });
-    })
+        postData("/save", { date:newTime, temp:data.main.temp, content:newContent })
     /*to get the data from projectdata (the js object) displayed on the browser*/
-    .then(
-        updateUI()
-    )
+    .then(updateUI())
+    })
 }
 
 
@@ -62,7 +61,7 @@ const postData = async ( url = '', data = {})=>{
 
 /* with fetch, I 'm gonna call the data from the js object projectData*/
 const updateUI = async() => {
-    const request= await fetch("/");
+    const request = await fetch("/all")
     try {
         const allData = await request.json();
         document.getElementById('date').innerHTML = allData[0].date;
