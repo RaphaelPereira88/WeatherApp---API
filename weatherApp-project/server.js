@@ -40,7 +40,9 @@ app.post("/save", function(req,res) {
     let newData = req.body;
     let newEntry= {
         date: newData.date,
+        name: newData.name,
         temp: newData.temp,
+        description:newData.description,
         content: newData.content
     }
     /*to assign user datas and api datas to the js object*/
