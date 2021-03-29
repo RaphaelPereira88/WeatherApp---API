@@ -1,34 +1,62 @@
 body{
-    background: #fffff8;
+    background: #43d6b4;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 #app{
-    display: grid;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	animation: gradient 15s ease infinite;
+    border-radius: 20%;
     margin:auto;
-    padding:10px;
-    grid-auto-rows: minmax(10px, auto);
+    width:60%;
+    display: grid;
+    grid-auto-rows: minmax(50px, auto);
     /* grid-template-columns:  */
     height:100vh;
-    background: #f23557;
     color: #f0d43a;
     justify-content: center;
-    grid-gap: 1em;
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
+    padding-bottom:10px;
 }
 
-.holder{
-
-}
-
-.entry{
-    background: rgba(59, 74, 107, .4);
+.icon {
+    display: none;
+    color:yellow;
+    margin:2px;
+    padding:2px
 }
 
 #entryHolder{
-
+    margin:auto;
+    text-align: center;
+    border-radius: 20%;
+    padding:15px;
+    padding:auto;
+    width: 200px;
+    height:200px;
+    background: #22b2da;
+    border:solid rgb(117, 111, 111);
 }
+
+#entry{
+    margin:0;
+    display: flex;
+    flex-wrap:wrap;
+}
+
+#content{
+    border-radius: 20%;
+    word-wrap: break-word;
+    margin:auto;
+    padding:15px;
+    padding:auto;
+    background: #22b2da;
+    width: 200px;
+    height:200px;
+    border:solid rgb(141, 134, 134);
+}
+
 
 #date{
 
@@ -38,9 +66,6 @@ body{
 
 }
 
-#content{
-
-}
 
 .headline {
 
@@ -52,9 +77,12 @@ body{
 /*  Basic Styling To Override Default For Basic HTML Elements */
 label{
     display:block;
+    font-size: 27px;
+    height:40px;
 }
 
 input{
+    border-radius: 10px;
     display:block;
     height: 60px;
     width: 320px;
@@ -90,15 +118,18 @@ button:active {
 
 h1{
     font-size: 36px;
+    text-align:center;
 }
 
 textarea{
+    border-radius: 10px;
     height:100px;
     width:500px;
     background:#22b2da;
     color: #f0d43a;
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
+    border:none;
 }
 /* Reset style for HTML element on active to have no border*/
 input:focus,
@@ -109,19 +140,19 @@ button:focus {
 }
 /* Style for Placeholder Text*/
 ::placeholder { /* Firefox, Chrome, Opera */ 
-    color: #f0d43a; 
+    color: grey; 
     font-family: 'Oswald', sans-serif;
 
 } 
   
 :-ms-input-placeholder { /* Internet Explorer 10-11 */ 
-    color: #f0d43a; 
+    color: grey; 
     font-family: 'Oswald', sans-serif;
 
 } 
   
 ::-ms-input-placeholder { /* Microsoft Edge */ 
-    color: #f0d43a; 
+    color: grey; 
     font-family: 'Oswald', sans-serif;
 
 }
