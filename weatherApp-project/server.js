@@ -43,6 +43,7 @@ app.post("/save", function(req,res) {
         name: newData.name,
         temp: newData.temp,
         description:newData.description,
+        icon: newData.icon,
         content: newData.content
     }
     /*to assign user datas and api datas to the js object*/
