@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <title>Weather Journal</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="http://openweathermap.org/img/wn/"+x+"@2x.png">
 <link href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" type ="text/css" href="style.css"/>
 <link rel="stylesheet" type ="text/css" href="map.css"/>
@@ -12,9 +13,9 @@
 
  <body>
     <div id = "app">
-        <h1>Weather Journal Appv</h1>
+        <h1>Weather Journal App</h1>
         <section class ="holder zip">
-            <label for="country">1.seclect the country</label>
+            <label for="country">1. Select the country</label>
             <select name="countryCode" class ="form-control" id="country">
                 <option value="0" label="Select a country ... " selected="selected">Select a country ... </option>
                 <option value="AF">Afghanistan</option>
@@ -268,22 +269,27 @@
                 <option value="ZW">Zimbabwe</option>
             </select>
         </section>
-        <label for="zip">Enter Zipcode or City  here</label>
-        <input type="text" id="zip" placeholder="enter zip code or City here">
+        <section>
+        <label for="zip">2. Enter Zipcode or City  here</label>
+            <input type="text" id="zip" placeholder="enter zip code or City here">
+        </section>
 
         <section class ="holder feel">
-            <label for="feelings">How are you feeling today?</label>
+            <label for="feelings">3. How are you feeling today?</label>
             <textarea class= "myInput" id="feelings" placeholder="Enter your feelings here" rows="9" cols="50"></textarea>
             <button id="generate" type = "submit"> Go </button>
         </section>
-        <section class ="holder entry">
-            <div class = "title">Most Recent Entry</div>
+        <label for="recent">Most recent entry</label>
+        <section class ="holder_entry" id = "entry">
                 <div id = "entryHolder">
                     <div id = "name"></div> 
                     <div id = "date"></div> 
-                    <div id = "description">Forcast Description:</div> 
+                    <div id = "description"></div>
                     <div id = "temp"></div>
-                    <div id = "content"></div>
+                    <img id="icon" src="">
+                </div>
+                <div id = "content"> 
+                    <div id = "feeling_note"></div>
                 </div>
             </div>
         </section>
