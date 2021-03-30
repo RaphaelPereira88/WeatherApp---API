@@ -11,13 +11,13 @@ function action(e){
     const newZip = document.getElementById('zip').value;
     const country= document.getElementById('country').value;
     const newContent = document.getElementById('feelings').value;
-    let countryComma = ',';
-    let baseURL ='https://api.openweathermap.org/data/2.5/weather?q=';
-    let apiKey = "&units=metric&appid=c3ce4cd3a2dad80331ebdf71257604b6";
+    const countryComma = ',';
+    const baseURL ='https://api.openweathermap.org/data/2.5/weather?q=';
+    const apiKey = "&units=metric&appid=c3ce4cd3a2dad80331ebdf71257604b6";
 
     /*Create a new date instance dynamically with JS*/
-    let d = new Date();
-    let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+    const d = new Date();
+    const newDate = d.getMonth()+1+'.'+ d.getDate()+'.'+ d.getFullYear();
     document.getElementById("date").value = newDate;
     const newTime = document.getElementById("date").value;
 
@@ -28,6 +28,10 @@ function action(e){
     }else{
         getCity(baseURL, newZip,countryComma,country, apiKey)
         /*to tell the program to do this task after the previous one */
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        })
         .then(function(data){
             postData("/save", { date:newTime, name: data.name, temp:data.main.temp, 
                 description:data.weather[0].description, content:newContent, icon:data.weather[0].icon })
@@ -42,14 +46,17 @@ function action(e){
 /*Get request function using Fetch to make a dynamic url query*/
 
 const getCity = async (baseURL, zip, countryComma, country, key) =>{
-    const res = await fetch(baseURL+ zip + countryComma + country + key )
     try{
-        const data = await res.json();
-        console.log(data);
-        return data
+        const res = await fetch(baseURL+ zip + countryComma + country + key )
+        if(res.status == 404){
+            throw "Zip code not found";
+    	}else{
+            const data = await res.json();
+            console.log(data);
+            return data
+        }
     }catch(err){
-        console.log("error",error);
-        alert("error");
+        throw err;
     }
 }
 
@@ -67,7 +74,7 @@ const postData = async ( url = '', data = {})=>{
         const newData = await res.json();
         return newData;
     }catch(error) {
-        console.log( "rrrrrrrrr", error);
+        console.log( "error", error);
     }
 };
 
