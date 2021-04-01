@@ -10,7 +10,7 @@ body{
     margin:auto;
     width:60%;
     display: grid;
-    grid-auto-rows: minmax(50px, auto);
+    grid-auto-rows: minmax(0px, auto);
     /* grid-template-columns:  */
     height:100vh;
     color: #f0d43a;
@@ -36,7 +36,7 @@ body{
     width: 200px;
     height:200px;
     background: #22b2da;
-    border:solid rgb(117, 111, 111);
+    border:solid #43d6b4;
 }
 
 #entry{
@@ -54,7 +54,7 @@ body{
     background: #22b2da;
     width: 200px;
     height:200px;
-    border:solid rgb(141, 134, 134);
+    border:solid #43d6b4;
 }
 
 
@@ -90,7 +90,7 @@ input{
     color: #f0d43a;
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
-    border: none;
+    border:solid #43d6b4;
 }
 
 
@@ -129,7 +129,7 @@ textarea{
     color: #f0d43a;
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
-    border:none;
+    border:solid #43d6b4;
 }
 /* Reset style for HTML element on active to have no border*/
 input:focus,
