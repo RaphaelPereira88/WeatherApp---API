@@ -13,10 +13,10 @@
  <body>
     <div id = "app">
         <h1>Weather Journal App</h1>
-        <section class ="holder zip">
+        <section class ="holder zip" id="holderZip">
             <label for="country">1. Select the country</label>
             <select name="countryCode" class ="form-control" id="country">
-                <option value="0" label="Select a country ... " selected="selected">Select a country ... </option>
+                <option value="0" label="Select a country ... " selected="selected">Select </option>
                 <option value="AF">Afghanistan</option>
                 <option value="AX">Åland Islands</option>
                 <option value="AL">Albania</option>
@@ -268,14 +268,14 @@
                 <option value="ZW">Zimbabwe</option>
             </select>
         </section>
-        <section>
+        <section id="zipEntry">
         <label for="zip">2. Enter Zipcode or City  here</label>
             <input type="text" id="zip" placeholder="enter zip code or City here">
         </section>
 
-        <section class ="holder feel">
+        <section class ="holder_feel" id="holderFeel">
             <label for="feelings">3. How are you feeling today?</label>
-            <textarea class= "myInput" id="feelings" placeholder="Enter your feelings here" rows="9" cols="50"></textarea>
+            <textarea class= "myInput" id="feelings" placeholder="Enter your feelings here"></textarea>
             <button id="generate" type = "submit"> Go </button>
         </section>
         <label for="recent">Most recent entry</label>
