@@ -50,5 +50,3 @@ app.post("/save", function(req,res) {
     Object.assign(projectData, newEntry);
     console.log(projectData)
 });
-
-
