@@ -3,6 +3,10 @@ document.getElementById("country").addEventListener('click',()=>{
     document.getElementById("country").style.borderColor = "black";
 });
 
+window.addEventListener('click',()=>{
+    document.getElementById("zip").style.borderColor = "#43d6b4";
+});
+
 /* Event listener that will trigger the API call function and gather all the user datas and API 
 datas that the server will then add to the js object projectData */
 document.getElementById('generate').addEventListener('click',action);
@@ -28,15 +32,15 @@ function action(e){
     }else{
         getCity(baseURL, newZip,countryComma,country, apiKey)
         /*to tell the program to do this task after the previous one */
-        .catch(function (error) {
-            // handle error
-            console.log(error);
-        })
         .then(function(data){
             postData("/save", { date:newTime, name: data.name, temp:data.main.temp, 
                 description:data.weather[0].description, content:newContent, icon:data.weather[0].icon })
         /*to get the data from projectdata (the js object) displayed on the browser*/
         .then(updateUI())
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        })
         });
     }
 }
@@ -49,7 +53,9 @@ const getCity = async (baseURL, zip, countryComma, country, key) =>{
     try{
         const res = await fetch(baseURL+ zip + countryComma + country + key )
         if(res.status == 404){
-            throw "Zip code not found";
+            document.getElementById("zip").style.borderColor = "red";
+            alert("wrong entry please try")
+            window.stop();
     	}else{
             const data = await res.json();
             console.log(data);
