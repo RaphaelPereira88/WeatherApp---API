@@ -49,6 +49,7 @@ app.post("/save", function(req,res) {
     /*to assign user datas and api datas to the js object*/
     Object.assign(projectData, newEntry);
     console.log(projectData)
+    res.end() //using res.end()
 });
 
 
