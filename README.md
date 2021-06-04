@@ -3,7 +3,7 @@ An asynchronous web app that uses Web API and user data to dynamically update th
 
 
 ## INSTRUCTION:
-# Project Environment Setup:
+### Project Environment Setup:
 
 1)Node and Express Environment:
 
@@ -23,7 +23,7 @@ Local server should be running and producing feedback to the Command Line throug
 
 Create API credentials on OpenWeatherMap.com
 
-# APIs and Routes:
+### APIs and Routes:
 
 1)APP API Endpoint:
 
@@ -52,7 +52,7 @@ You should be able to add an entry to the project endpoint using a POST route se
 The client side function should take two arguments, the URL to make a POST to, and an object holding the data to POST.
 The server side function should create a new entry in the apps endpoint (the named JS object) consisting of the data received from the client side POST.
 
-# Dynamic UI:
+### Dynamic UI:
 
 1)Assigning Element Properties Dynamically 
 
